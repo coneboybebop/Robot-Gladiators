@@ -30,7 +30,9 @@ var enemyAttack= 12;
 
 var fight = function(enemyName) {
 
-    
+    // repeat and execute as long as enemy-robot is alive
+
+    while(playerHealth > 0 && enemyHealth > 0) {
 
     window.alert ("Welcome to Robot Gladiators!");
 
@@ -57,6 +59,8 @@ var fight = function(enemyName) {
 
     if (enemyHealth <= 0) {
         window.alert(enemyName + " has died!");
+
+        break;
     }
         
     else {
@@ -77,11 +81,15 @@ var fight = function(enemyName) {
 
     if (playerHealth <= 0) {
         window.alert(playerName + " has died!");
+
+        break;
     }
 
     else {
         window.alert(playerName + " still has " + playerHealth + " health remaining.")
     }
+
+    
 
     }
 
@@ -94,7 +102,11 @@ var fight = function(enemyName) {
             window.alert(playerName + " has decided to skip the fight. Goodbye!");
 
             //subtract player money for skipping the fight
-            playerMoney = playerMoney - 2;
+            playerMoney = playerMoney - 10;
+
+            console.log ("playerMoney",playerMoney);
+
+            break;
         }
 
         //if no (false), ask question again by running fight() again
@@ -108,12 +120,16 @@ var fight = function(enemyName) {
         window.alert("You need to choose a valid option. Please try again!")
     }
 
-
+}
 
 }
 
 
 for (var i = 0; i < enemyNames.length; i++) {
 
-    fight(enemyNames[i]);
+    var pickedEnemyName = enemyNames[i];
+
+    enemyHealth = 50;
+
+    fight(pickedEnemyName);
 }
